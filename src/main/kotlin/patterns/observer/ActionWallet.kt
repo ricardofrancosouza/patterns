@@ -1,6 +1,4 @@
-package org.example.patterns.observer.impls
-
-import org.example.patterns.observer.Observer
+package org.example.patterns.observer
 
 class ActionWallet {
     private val actions = mutableMapOf<String, Int>()
@@ -12,6 +10,7 @@ class ActionWallet {
             quantitySum += actions[action]!!
         }
         actions[action] = quantitySum
+        notify(action, quantitySum)
 
     }
     private fun notify(action: String, quantity: Int){
@@ -20,7 +19,7 @@ class ActionWallet {
         }
     }
 
-    private fun addObserver(newObserver: Observer){
+     fun addObserver(newObserver: Observer){
         observers.add(newObserver)
     }
 }
